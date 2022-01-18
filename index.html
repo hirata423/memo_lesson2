@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Memo-lesson2</title>
+</head>
+<div id="box">
+    <form id="memoForm" name ="memoForm">
+            <div id="title">Memo</div>
+                <input type="text" id="memo" name="memo" placeholder="メモを追加できます">
+            <div id="btn1">
+                <input type="button" id="pushe" name="pushe" value="Pushe" onclick="pusheMemo()">
+            </div>
+            <ul id="onchange"></ul>
+            <div id="title">List</div>
+                <div id ="form">
+                    <input type="checkbox" checked id="crear1" onclick="crearText()">
+                    <input type="text" id="list" name="list" placeholder="ここに追加されます">
+            </div>
+            <div id="btn2">
+                <input type="button" id="save" name="save"  value="Save" onclick="save()">
+                <input type="button" id="load" name="load" value="Load" onclick="load()">
+            </div>
+    </form>
+</div>
+<body>
+
+    <script>
+
+            //文字列で再代入したため一旦letで定義します
+            let date = new Date(); //データ取得
+            let year = date.getFullYear(); //年
+            let month = date.getMonth() + 1; //月
+            let dayNum= date.getDate(); //日
+            let hour = date.getHours(); //時間
+            let minutes = date.getMinutes(); //分
+             
+            //条件式
+            if (month<10){month= "0" + month};
+            if (dayNum <10){dayNum= "0" + dayNum};
+            if (hour <10){hour= "0" + hour};
+            if (minutes <10){minutes= "0" + minutes};
+
+            //日時の配列をし、today関数と定義
+            let today = year + ':' + month + ':' + dayNum + ':' + hour + ':' + minutes ;
+
+            //i=1関数を定義
+            var i = 1 ;
+
+            //空の配列
+            let savememo=[];           
+            savememo.push(`<div id="pushe">`);
+            console.log(savememo);
+
+
+            //pusheのクリックイベントを生成
+            const pusheMemo = function(){
+                
+                //#memoに入力された文字を取得し、memo関数と定義
+                const memo = document.getElementById("memo").value;
+                //memo関数、today関数を配列にする
+                const set = memo + today;
+
+                //削除する前に空の配列に避難させ、その配列から＃listに代入したい
+
+                //set関数を#listに代入し、list関数と定義                           
+                document.getElementById("list").value = set;
+                //#memoから取得した内容を＃listに代入すると同時に#memo内のテキストを削除
+                document.getElementById("memo").value=""; 
+
+
+                //input要素を生成し、copycheck関数を定義
+                var copycheck = document.createElement("input");
+                copycheck.type = "checkbox";
+                copycheck.onclick= "()";
+                copycheck.id = "check";
+                copycheck.checked;
+                //#listの横に出力するため、＃form要素に追加し、parentcheck関数を定義
+                var parentcheck = document.getElementById("form");
+                //引数にcopycheck関数を渡し、#form内に出力
+                parentcheck.appendChild(copycheck);                
+
+               //input要素を生成し、copy関数を定義
+                var copy = document.createElement("input");
+                copy.type = "text";
+                copy.id = "list" + i;
+                copy.placeholder = "次はここに追加されます" + i;
+                copy.style.width="600px"
+                copy.style.height="50px"
+                copy.style.fontSize="17px"
+                copy.style.border="rgb(68, 68, 68) 1px solid"
+                // copy.style.background-color="white"
+                copy.style.display="block"
+                //＃listが格納されている＃form要素に追加し、parent関数を定義
+                var parent = document.getElementById("form");
+                //引数にcopy関数を渡し、#form内に出力
+                parent.appendChild(copy);
+                //i=1+1
+                i++ ;
+
+            
+                const memo1 = document.getElementById("memo").value;
+                const set1 = memo1 + today;
+                document.getElementById("list1").value = set1;
+
+                const memo2 = document.getElementById("memo").value;
+                const set2 = memo2 + today;
+                document.getElementById("list2").value = set2;
+
+                // const memo3 = document.getElementById("memo").value;
+                // const set3 = memo3 + today;
+                // document.getElementById("list3").value = set3;
+
+                // const memo4 = document.getElementById("memo").value;
+                // const set4 = memo4 + today;
+                // document.getElementById("list4").value = set4;
+                
+                // const memo5 = document.getElementById("memo").value;
+                // const set5 = memo5 + today;
+                // document.getElementById("list5").value = set5;
+
+                // const memo6 = document.getElementById("memo").value;
+                // const set6 = memo6 + today;
+                // document.getElementById("list6").value = set6;
+
+                // const memo7 = document.getElementById("memo").value;
+                // const set7 = memo7 + today;
+                // document.getElementById("list7").value = set7;
+            }
+
+            //checkが外されたら＃list毎削除
+            // const crearText = function(){
+            //     const form = document.getElementById("form");
+            //     form.removeChild(list);
+
+            // }
+
+            // Mmemo欄のテキストをpusheすると削除される仕組みだと、
+            // 生成される＃list１〜７のmemo1~7の文字列も削除される。
+            // その為、文字列がnullとなり、日時データのみ出力される。
+            // 解消するには、削除する前にテキストをどこかに移動しておく必要がる。
+
+            
+                
+
+    </script>
+
+</body>
+</html>
