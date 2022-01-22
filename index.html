@@ -131,9 +131,26 @@
                 // document.getElementById("list1").value = set1;
             };
 
+                //list欄のテキストを取得
+                let delobj = document.getElementById("list");
+
+
+                //チェックボックスにチェックを入れたら削除
+                const goDst = function(){
+                    delobj.value = "";
+                };
+
                 //　crearText()でチェックがつけられたら削除を実行し、テキストが削除されたらチェックを外したい
                 // チェックがつけられていなかったら、削除しない
 
+                let isCheck = true
+
+                const checkDel = function(){
+                    if(isCheck){
+                        goDst();
+                    }
+                //falseの時の記述がわからない
+                };
 
 
     </script>        
