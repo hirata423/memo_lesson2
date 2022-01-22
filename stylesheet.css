@@ -10,35 +10,15 @@
     align-items: center;
     border: darkblue 2px solid;
 }
+
+/*---------タイトル------------*/
 #title{
     color: darkblue;
     font-size: 20px;
     margin: 10px;
 }
-#pushe{
-    background-color:rgb(53, 148, 53);
-    color:white;
-    font-size: 15px;
-    width: 60px;
-    height: 35px;
-    border-radius: 20%;
-}
-#save{
-    background-color:rgb(199, 199, 199);
-    color:rgb(0, 0, 0);
-    font-size: 15px;
-    width: 60px;
-    height: 35px;
-    border-radius: 20%;
-}
-#load{
-    background-color:rgb(199, 199, 199);
-    color:rgb(0, 0, 0);
-    font-size: 15px;
-    width: 60px;
-    height: 35px;
-    border-radius: 20%;
-}
+
+/*-----------テキストエリア--------*/
 #memo{
     width: 600px;
     height: 50px;
@@ -53,16 +33,50 @@
     display: block;
 }
 
+/*----ボタン関------*/
+#pushe{
+    background-color:rgb(53, 148, 53);
+    color:white;
+    font-size: 15px;
+    width: 60px;
+    height: 35px;
+    border-radius: 20%;
+}
+#all{
+    background-color:rgb(199, 199, 199);
+    color:rgb(0, 0, 0);
+    font-size: 15px;
+    width: 60px;
+    height: 35px;
+    border-radius: 20%;
+}
 #check{
+    background-color:rgb(199, 199, 199);
+    color:rgb(0, 0, 0);
+    font-size: 15px;
+    width: 60px;
+    height: 35px;
+    border-radius: 20%;
+}
+
+/*-----------付属ボタン関係------------*/
+#dst{
+    background-color:white;
+    float: right;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 16px;
+    padding-bottom: 4px;
+    padding-left: 4px;
+    height: 25px;
+    width: 25px;
+    border-radius: 10%;
+    /* border:rgb(83, 83, 83) solid 1px; */
+    /* box-shadow: 1px 1px 1px rgb(83, 83, 83) ; */
+}
+#crear{
     float: right;
     width: 25px;
     height: 25px;
     margin-top: 16px;
 } 
-
-#crear1{
-    float: right;
-    width: 25px;
-    height: 25px;
-    margin-top: 16px;
-}

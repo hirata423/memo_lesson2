@@ -14,15 +14,17 @@
             <div id="btn1">
                 <input type="button" id="pushe" name="pushe" value="Pushe" onclick="pusheMemo()">
             </div>
-            <ul id="onchange"></ul>
             <div id="title">List</div>
                 <div id ="form">
-                    <input type="checkbox" checked id="crear1" onclick="crearText()">
+                    <input type="checkbox" id="crear" onclick="crearText()">
+                    <!-- <input type ="image" src="images/dst.jpg" id="dst" onclick="goDst"> -->
+                    <button id="dst" type="button" onclick="goDst()">🗑</button>
                     <input type="text" id="list" name="list" placeholder="ここに追加されます">
             </div>
             <div id="btn2">
-                <input type="button" id="save" name="save"  value="Save" onclick="save()">
-                <input type="button" id="load" name="load" value="Load" onclick="load()">
+                <input type="button" id="all" name="all" value="All" onclick="allDel()">
+                <input type="button" id="check" name="check" value="Check" onclick="checkDel()">
+
             </div>
     </form>
 </div>
@@ -52,8 +54,7 @@
 
             //空の配列
             let savememo=[];           
-            savememo.push(`<div id="pushe">`);
-            console.log(savememo);
+
 
 
             //pusheのクリックイベントを生成
@@ -75,13 +76,37 @@
                 //input要素を生成し、copycheck関数を定義
                 var copycheck = document.createElement("input");
                 copycheck.type = "checkbox";
-                copycheck.onclick= "()";
-                copycheck.id = "check";
-                copycheck.checked;
+                copycheck.onclick= "crearText1()";
+                copycheck.id = "crear" + i;
+                // copycheck.setAttribute("checked","checked");
+                copycheck.style.float="right"
+                copycheck.style.width="25px"
+                copycheck.style.height="25px"
+                copycheck.style.marginTop="16px"
+
                 //#listの横に出力するため、＃form要素に追加し、parentcheck関数を定義
                 var parentcheck = document.getElementById("form");
                 //引数にcopycheck関数を渡し、#form内に出力
-                parentcheck.appendChild(copycheck);                
+                parentcheck.appendChild(copycheck);  
+
+                var copydst = document.createElement("button");
+                copydst.id = "dst" + i;
+                copydst.onclick = "goDst1()";
+                copydst.type = "button";
+                copydst.setAttribute("value","🗑");
+                copydst.style.backgroundColor="white";
+                copydst.style.float="right";
+                copydst.style.margin="0px";
+                copydst.style.padding="0px";
+                copydst.style.marginTop="16px";
+                copydst.style.paddingBottom="4px";
+                copydst.style.paddingLeft="4px";
+                copydst.style.height="25px";
+                copydst.style.width="25px";
+                copydst.style.borderRadius="10%";
+
+                var parentdst = document.getElementById("form");
+                parentdst.appendChild(copydst);
 
                //input要素を生成し、copy関数を定義
                 var copy = document.createElement("input");
@@ -101,52 +126,16 @@
                 //i=1+1
                 i++ ;
 
-            
-                const memo1 = document.getElementById("memo").value;
-                const set1 = memo1 + today;
-                document.getElementById("list1").value = set1;
+                // const memo1 = document.getElementById("memo").value;
+                // const set1 = memo1 + today;
+                // document.getElementById("list1").value = set1;
+            };
 
-                const memo2 = document.getElementById("memo").value;
-                const set2 = memo2 + today;
-                document.getElementById("list2").value = set2;
+                //　crearText()でチェックがつけられたら削除を実行し、テキストが削除されたらチェックを外したい
+                // チェックがつけられていなかったら、削除しない
 
-                // const memo3 = document.getElementById("memo").value;
-                // const set3 = memo3 + today;
-                // document.getElementById("list3").value = set3;
 
-                // const memo4 = document.getElementById("memo").value;
-                // const set4 = memo4 + today;
-                // document.getElementById("list4").value = set4;
-                
-                // const memo5 = document.getElementById("memo").value;
-                // const set5 = memo5 + today;
-                // document.getElementById("list5").value = set5;
 
-                // const memo6 = document.getElementById("memo").value;
-                // const set6 = memo6 + today;
-                // document.getElementById("list6").value = set6;
-
-                // const memo7 = document.getElementById("memo").value;
-                // const set7 = memo7 + today;
-                // document.getElementById("list7").value = set7;
-            }
-
-            //checkが外されたら＃list毎削除
-            // const crearText = function(){
-            //     const form = document.getElementById("form");
-            //     form.removeChild(list);
-
-            // }
-
-            // Mmemo欄のテキストをpusheすると削除される仕組みだと、
-            // 生成される＃list１〜７のmemo1~7の文字列も削除される。
-            // その為、文字列がnullとなり、日時データのみ出力される。
-            // 解消するには、削除する前にテキストをどこかに移動しておく必要がる。
-
-            
-                
-
-    </script>
-
+    </script>        
 </body>
 </html>
