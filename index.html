@@ -18,18 +18,16 @@
                 <div id ="form">
                     <input type="checkbox" id="crear" onclick="crearText()">
                     <!-- <input type ="image" src="images/dst.jpg" id="dst" onclick="goDst"> -->
-                    <button id="dst" type="button" onclick="goDst()">🗑</button>
+                    <input type="button" id="dst" type="button" value="🗑" onclick="goDst()">
                     <input type="text" id="list" name="list" placeholder="ここに追加されます">
             </div>
             <div id="btn2">
                 <input type="button" id="all" name="all" value="All" onclick="allDel()">
                 <input type="button" id="check" name="check" value="Check" onclick="checkDel()">
-
             </div>
     </form>
 </div>
 <body>
-
     <script>
 
             //文字列で再代入したため一旦letで定義します
@@ -47,15 +45,13 @@
             if (minutes <10){minutes= "0" + minutes};
 
             //日時の配列をし、today関数と定義
-            let today = year + ':' + month + ':' + dayNum + ':' + hour + ':' + minutes ;
+            let today = year + ':' + month + ':' + dayNum + '.' + hour + '/' + minutes ;
 
             //i=1関数を定義
             var i = 1 ;
 
             //空の配列
-            let savememo=[];           
-
-
+            var stockMemo=[];           
 
             //pusheのクリックイベントを生成
             const pusheMemo = function(){
@@ -64,93 +60,76 @@
                 const memo = document.getElementById("memo").value;
                 //memo関数、today関数を配列にする
                 const set = memo + today;
-
-                //削除する前に空の配列に避難させ、その配列から＃listに代入したい
-
+                //配列に避難
+                stockMemo.push(set);
+                    for (let i = 0; i < stockMemo.length; i++){
+                        console.log(stockMemo[i]);
+                    }
                 //set関数を#listに代入し、list関数と定義                           
-                document.getElementById("list").value = set;
+                document.getElementById("list").value = stockMemo[0];
                 //#memoから取得した内容を＃listに代入すると同時に#memo内のテキストを削除
                 document.getElementById("memo").value=""; 
 
-
-                //input要素を生成し、copycheck関数を定義
+                //input要素を生成し、checkboxを作る
                 var copycheck = document.createElement("input");
-                copycheck.type = "checkbox";
-                copycheck.onclick= "crearText1()";
-                copycheck.id = "crear" + i;
+                    copycheck.type = "checkbox";
+                    copycheck.onclick= "crearText1()";
+                    copycheck.id = "crear" + i;
                 // copycheck.setAttribute("checked","checked");
-                copycheck.style.float="right"
-                copycheck.style.width="25px"
-                copycheck.style.height="25px"
-                copycheck.style.marginTop="16px"
+                    copycheck.style.float="right"
+                    copycheck.style.width="25px"
+                    copycheck.style.height="25px"
+                    copycheck.style.marginTop="16px"
 
                 //#listの横に出力するため、＃form要素に追加し、parentcheck関数を定義
                 var parentcheck = document.getElementById("form");
                 //引数にcopycheck関数を渡し、#form内に出力
-                parentcheck.appendChild(copycheck);  
+                    parentcheck.appendChild(copycheck);  
 
-                var copydst = document.createElement("button");
-                copydst.id = "dst" + i;
-                copydst.onclick = "goDst1()";
-                copydst.type = "button";
-                copydst.setAttribute("value","🗑");
-                copydst.style.backgroundColor="white";
-                copydst.style.float="right";
-                copydst.style.margin="0px";
-                copydst.style.padding="0px";
-                copydst.style.marginTop="16px";
-                copydst.style.paddingBottom="4px";
-                copydst.style.paddingLeft="4px";
-                copydst.style.height="25px";
-                copydst.style.width="25px";
-                copydst.style.borderRadius="10%";
+                //buttonタグを生成し、ゴミ箱を作る
+                var copydst = document.createElement("input");
+                    copydst.id = "dst" + i;
+                    copydst.onclick = "goDst1()";
+                    copydst.type = "button";
+                    copydst.value = "🗑";
+                    copydst.style.backgroundColor="white";
+                    copydst.style.float="right";
+                    copydst.style.margin="0px";
+                    copydst.style.padding="0px";
+                    copydst.style.marginTop="16px";
+                    copydst.style.paddingBottom="4px";
+                    copydst.style.paddingLeft="4px";
+                    copydst.style.height="25px";
+                    copydst.style.width="25px";
+                    copydst.style.borderRadius="10%";
 
                 var parentdst = document.getElementById("form");
-                parentdst.appendChild(copydst);
+                    parentdst.appendChild(copydst);
 
-               //input要素を生成し、copy関数を定義
+               //input要素を生成し、Listを作る
                 var copy = document.createElement("input");
-                copy.type = "text";
-                copy.id = "list" + i;
-                copy.placeholder = "次はここに追加されます" + i;
-                copy.style.width="600px"
-                copy.style.height="50px"
-                copy.style.fontSize="17px"
-                copy.style.border="rgb(68, 68, 68) 1px solid"
-                // copy.style.background-color="white"
-                copy.style.display="block"
+                    copy.type = "text";
+                    copy.id = "list" + i;
+                    copy.placeholder = "次はここに追加されます" + i;
+                    copy.style.width="600px"
+                    copy.style.height="50px"
+                    copy.style.fontSize="17px"
+                    copy.style.border="rgb(68, 68, 68) 1px solid"
+                    // copy.style.background-color="white"
+                    copy.style.display="block"
                 //＃listが格納されている＃form要素に追加し、parent関数を定義
                 var parent = document.getElementById("form");
                 //引数にcopy関数を渡し、#form内に出力
-                parent.appendChild(copy);
-                //i=1+1
-                i++ ;
+                    parent.appendChild(copy);
+                    //i=1+1
+                    i++ ;
 
-                // const memo1 = document.getElementById("memo").value;
-                // const set1 = memo1 + today;
-                // document.getElementById("list1").value = set1;
+                document.getElementById("list1").value = stockMemo[1];
+                document.getElementById("list2").value = stockMemo[2];
+                document.getElementById("list3").value = stockMemo[3];
+
             };
 
-                //list欄のテキストを取得
-                let delobj = document.getElementById("list");
-
-
-                //チェックボックスにチェックを入れたら削除
-                const goDst = function(){
-                    delobj.value = "";
-                };
-
-                //　crearText()でチェックがつけられたら削除を実行し、テキストが削除されたらチェックを外したい
-                // チェックがつけられていなかったら、削除しない
-
-                let isCheck = true
-
-                const checkDel = function(){
-                    if(isCheck){
-                        goDst();
-                    }
-                //falseの時の記述がわからない
-                };
 
 
     </script>        
